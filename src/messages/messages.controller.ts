@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { CreateMessageDTO } from './dtos/create-message.dto';
 import { MessagesService } from './messages.service';
+import { UpdateMessageDTO } from './dtos/update-message.dto';
 
 @Controller('messages')
 export class MessagesController {
@@ -36,7 +37,7 @@ export class MessagesController {
     }
 
     @Put('/:id')
-    updateMessage(@Param('id') id: string,  @Body() body: Partial<CreateMessageDTO>) {
+    updateMessage(@Param('id') id: string,  @Body() body: UpdateMessageDTO) {
         console.log("Update Message with ID: " + id);
         console.log(body);
         return this.messagesService.update(id, body);

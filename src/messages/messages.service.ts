@@ -34,7 +34,7 @@ export class MessagesService {
     //return this.messagesRepository.create(content);
     
     try{
-        const message = this.messagesRepository.create({content, status, date: new Date()});
+        const message = this.messagesRepository.create({content, status});
         await this.messagesRepository.save(message);
         return message;
     } catch(err){
@@ -49,6 +49,7 @@ export class MessagesService {
             throw new NotFoundException('Message not found');
         }
         Object.assign(message, msgBody);
+        //this.messagesRepository.
         await this.messagesRepository.save(message);
         return message;
     }catch(err){
