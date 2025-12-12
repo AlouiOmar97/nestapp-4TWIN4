@@ -1,15 +1,22 @@
+import { Exclude } from 'class-transformer';
+import { IsDate, IsString } from 'class-validator';
 import { Entity, ObjectIdColumn, ObjectId, Column, AfterInsert, AfterUpdate, AfterRemove, BeforeInsert } from 'typeorm';
 
 @Entity()
 export class Message {
     
 @ObjectIdColumn()
+@Exclude()
 id: ObjectId;
 @Column()
+@IsString()
 content: string;
 @Column()
+@IsString()
+@Exclude()
 status: string;
 @Column()
+@IsDate()
 date: Date;
 
 @BeforeInsert()
